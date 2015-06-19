@@ -21,7 +21,7 @@ $app->get('/', function ($request, $response, $args) {
 // json test route
 $app->post('/hello', function ($request, $response) {
   if (!$request->isAjax()) {
-    return $response->withStatus(403)->write("Method Not Allowed");
+    return $response->withStatus(405)->write("Method Not Allowed");
   } else {
     $data = $request->getParsedBody();
     return $response->withHeader(
