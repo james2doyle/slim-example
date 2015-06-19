@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ title }}</title>
+</head>
+<body>
+  <h1>Welcome to {{ title }}</h1>
+  <p><input type="text" name="name" id="name" value="Your Name" autofocus></p>
+  <p><button type="button" id="button">Test AJAX</button></p>
+  <p><code id="results">json response goes here</code></p>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script>
+    jQuery(document).ready(function($) {
+      $('#button').click(function(event) {
+        event.preventDefault();
+        $.post('hello', {
+          name: $('#name').val()
+        }).then(function(res) {
+          $('#results').html(res.message);
+        }, function(err) {
+          alert(JSON.stringify(res))
+        });
+        return false;
+      });
+    });
+  </script>
+</body>
+</html>
