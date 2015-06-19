@@ -8,8 +8,12 @@ $container = $app->getContainer();
 
 // Register Twig View service
 $container->register(new \Slim\Views\Twig(__DIR__ . '/views', [
-    'cache' => false // __DIR__ . '/cache'
-    ]));
+  'cache' => __DIR__ . '/cache',
+  'debug' => true,
+  'autoescape' => false,
+  'template-extension' => 'twig.html',
+  ])
+);
 
 // Define named route
 $app->get('/', function ($request, $response, $args) {
@@ -19,18 +23,19 @@ $app->get('/', function ($request, $response, $args) {
 })->setName('homepage');
 
 // json test route
+// $.post('hello', { name: 'Name'}).done(function(res){ console.log(res) });
 $app->post('/hello', function ($request, $response) {
   if (!$request->isAjax()) {
     return $response->withStatus(405)->write("Method Not Allowed");
   } else {
     $data = $request->getParsedBody();
-    return $response->withHeader(
-      'Content-type',
-      'application/json'
-      )->write(json_encode(array(
-        'message' => "Hello, " . $data['name']
-        )));
-    }
-  })->setName('hello');
+    return $response
+    ->withHeader('Content-type','application/json')
+    ->write(json_encode(array(
+      'message' => "Hello, " . $data['name']
+      )
+    ));
+  }
+})->setName('hello');
 
 $app->run();
