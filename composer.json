@@ -1,7 +1,8 @@
 {
     "require": {
         "slim/slim": "3.*",
-        "slim/twig-view": "dev-master"
+        "slim/twig-view": "dev-master",
+        "tuupola/slim-basic-auth": "dev-slim-3"
     },
     "minimum-stability": "dev"
 }

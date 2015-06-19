@@ -2,6 +2,11 @@
 
 {% block content %}
 <h1>Welcome to {{ title }}</h1>
+{% if logged_in %}
+  <p>You are logged in</p>
+  {% else %}
+  <p>You are not logged in. <a href="admin">Click here</a></p>
+{% endif %}
 <p><input type="text" name="name" id="name" value="Your Name" autofocus></p>
 <p><button type="button" id="button">Test AJAX</button></p>
 <p><code id="results">json response goes here</code></p>
