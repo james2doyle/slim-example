@@ -1,13 +1,19 @@
 {% extends 'layouts/master.twig.html' %}
 
 {% block content %}
-<div class="blankslate">
+<div class="blankslate my-3">
   <h3>Welcome to {{ title }}</h3>
   <p>This is a test for the buddy.works builder with Elastic Beanstalk.</p>
 </div>
-<p><input type="text" name="name" id="name" class="form-control" value="Your Name" autofocus></p>
-<p><button type="button" class="btn" id="button">Test AJAX</button></p>
-<p><code id="results">json response goes here</code></p>
+<div class="input-group">
+  <input type="text" name="name" id="name" class="form-control" value="Your Name" autofocus>
+  <span class="input-group-button">
+    <button type="button" class="btn" id="button">Test AJAX</button>
+  </span>
+</div>
+<div class="my-5">
+  <code id="results">json response goes here</code>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
   jQuery(document).ready(function($) {
