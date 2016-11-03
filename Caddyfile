@@ -1,0 +1,10 @@
+localhost:2020
+fastcgi / 127.0.0.1:9000 php
+rewrite {
+    if {file} match "[css|js]"
+    to {path}
+}
+rewrite / {
+    r  (.*)
+    to /index.php?{1}
+}
